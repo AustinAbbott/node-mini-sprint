@@ -1,6 +1,10 @@
 const http = require('http');
 
+const port = 8080;
+
+
 //headers to allows CORS requests
+
 const headers = {
   "access-control-allow-origin": "*",
   "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -8,22 +12,26 @@ const headers = {
   "access-control-max-age": 10
 };
 
-const port = 3000;
-
 // TODO: Fill with strings of your favorite quotes :)
 const quotes = [
-  'one',
+  'when work stops working, stop working',
   'two',
   'three',
   'four',
   'five'
 ];
 
+
+
 //Utility Function to return a random integer
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+function addNewQuote(str){
+  quotes.push(str);
 }
 
 const handleRequest = function(req, res) {
@@ -37,13 +45,15 @@ const handleRequest = function(req, res) {
   }
 
   // TODO: GET ONE
-  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "FILL ME IN") {
-    //YOUR CODE HERE
-
+  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
+    // quote[getRandomInt];
+    res.writeHead(200, headers);
+    res.end(quotes[getRandomInt]);
   }
+
   // TODO: POST/CREATE
-  else if ((req.url == 'FILL ME IN' || req.url == 'FILL ME IN') && req.method == "FILL ME IN") {
-    //YOUR CODE HERE
+  else if ((req.url == '/post/' || req.url == '/post') && req.method == "POST") {
+    addNewQuote(addQuote);
   }
 
 //CATCH ALL ROUTE

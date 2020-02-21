@@ -10,15 +10,33 @@ $(document).ready(function() {
     addQuote(quote);
   });
 
+   //YOUR CODE HERE, Add a GET request
   function getQuote(){
-
-    //YOUR CODE HERE, Add a GET request
-
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:8080/",
+      success: function() {
+        console.log("Get Success!")
+      },
+      error: function() {
+        console.log("Get Failed")
+      },
+      dataType: "string"
+    });
   }
 
   function addQuote(quote){
-    
-    //YOUR CODE HERE, Add a POST request
+    $.ajax({
+      type: "POST",
+      url: "http://127.0.0.1:8080/",
+      success: function() {
+        console.log("Post Success!")
+      },
+      error: function() {
+        console.log("Post Failed")
+      },
+      dataType: "string"
+    });
 
   }
 });
