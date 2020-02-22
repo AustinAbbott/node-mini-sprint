@@ -47,8 +47,8 @@ const handleRequest = function(req, res) {
   // TODO: GET ONE
   if ((req.url == '/quote/' || req.url == '/quote') && req.method == "GET") {
     // quote[getRandomInt];
-    res.writeHead(200, headers);
-    res.end(quotes[getRandomInt]);
+    res.writeHead(200, {...headers});
+    res.end(quotes[getRandomInt(0, quotes.length)]);
   }
 
   // TODO: POST/CREATE

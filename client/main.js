@@ -15,13 +15,13 @@ $(document).ready(function() {
     $.ajax({
       type: "GET",
       url: "http://localhost:8080/",
-      success: function() {
+      success: function(quotes) {
+        $('.quote').text(quotes)
         console.log("Get Success!")
       },
       error: function() {
         console.log("Get Failed")
       },
-      dataType: "string"
     });
   }
 
@@ -35,7 +35,6 @@ $(document).ready(function() {
       error: function() {
         console.log("Post Failed")
       },
-      dataType: "string"
     });
 
   }
