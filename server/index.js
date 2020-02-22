@@ -31,6 +31,7 @@ function getRandomInt(min, max) {
 }
 
 function addNewQuote(str){
+  console.log("=====")
   quotes.push(str);
 }
 
@@ -52,8 +53,16 @@ const handleRequest = function(req, res) {
   }
 
   // TODO: POST/CREATE
-  else if ((req.url == '/post/' || req.url == '/post') && req.method == "POST") {
-    addNewQuote(addQuote);
+  if ((req.url == '/quote/' || req.url == '/quote') && req.method == "POST" || req.method == "OPTIONS") {
+    req.on('data', (data) => {
+      console.log(data)
+      // addNewQuote(inputQuote)
+    })
+
+    // console.log(quotes)
+    // res.writeHead(200, {...headers});
+    // res.end();
+    // // addNewQuote(quote);
   }
 
 //CATCH ALL ROUTE

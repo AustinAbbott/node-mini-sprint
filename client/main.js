@@ -8,6 +8,7 @@ $(document).ready(function() {
     e.preventDefault();
     let quote = $('input').val();
     addQuote(quote);
+    // $('.quote').text(e.target.value)
   });
 
    //YOUR CODE HERE, Add a GET request
@@ -28,8 +29,11 @@ $(document).ready(function() {
   function addQuote(quote){
     $.ajax({
       type: "POST",
-      url: "http://127.0.0.1:8080/",
-      success: function() {
+      url: "http://localhost:8080/quote",
+      data: JSON.stringify(quote),
+      contentType: 'application/json',
+      success: function(quote) {
+        console.log(quote)
         console.log("Post Success!")
       },
       error: function() {
